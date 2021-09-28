@@ -187,9 +187,13 @@ if __name__=="__main__":
     # Converge to an initial steady state
     x = continuation.newton(x, 1e-10)
       
+    cp=0.2  
+      
     print("start continuation, this may take a while")
+  
+    print("running to continuation parameter", cp)
 
-    x, mu, data = continuation.continuation(x, 'Ocean->THCM->Starting Parameters->Combined Forcing', 0., 0.2, 0.005)
+    x, mu, data = continuation.continuation(x, 'Ocean->THCM->Starting Parameters->Combined Forcing', 0., cp, 0.005)
 
     write_set_to_file(x.grid, "global_96x38x12.amuse","amuse", overwrite_file=True)
 
