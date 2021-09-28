@@ -165,8 +165,6 @@ if __name__=="__main__":
 
     print("starting")
 
-    #~ instance.set_output_file("output.%p")
-
     #print out all parameters
     print(instance.parameters)
     
@@ -175,7 +173,6 @@ if __name__=="__main__":
     print(instance.Ocean__THCM__Starting_Parameters)
     
     # numerical parameters for the continuation
-
     parameters={"Newton Tolerance" : 1.e-2, "Verbose" : True,
                 "Minimum Step Size" : 0.001,
                 "Maximum Step Size" : 0.2,
