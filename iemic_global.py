@@ -122,7 +122,7 @@ starting (derived parameters):
 
 def initialize_global_iemic():
 
-    i = iemic(redirection="none", number_of_workers=1)
+    i = iemic(number_of_workers=1)
 
     i.parameters.Ocean__Belos_Solver__FGMRES_tolerance=1e-03
     i.parameters.Ocean__Belos_Solver__FGMRES_iterations=800
@@ -165,13 +165,9 @@ if __name__=="__main__":
 
     print("starting")
 
-    #print out all parameters
+    print("parameters:")
     print(instance.parameters)
-    
-    x = instance.get_state()
 
-    print(instance.Ocean__THCM__Starting_Parameters)
-    
     # numerical parameters for the continuation
     parameters={"Newton Tolerance" : 1.e-2, "Verbose" : True,
                 "Minimum Step Size" : 0.001,
@@ -182,7 +178,11 @@ if __name__=="__main__":
     continuation=Continuation(instance, parameters)
     
     # Converge to an initial steady state
+    x = instance.get_state()
     x = continuation.newton(x, 1e-10)
+
+    print("initialized THCM parameters:")
+    print(instance.Ocean__THCM__Starting_Parameters)
       
     cp=0.2  
       
