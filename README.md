@@ -42,3 +42,8 @@ Install/update necessary packages:
 The code can then be run using:
 
     python iemic_global.py
+
+This will produce a data file with the solution grid. An example script to visualize
+the solution is provided:
+
+    python read_data.py
